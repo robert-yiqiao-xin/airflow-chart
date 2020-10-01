@@ -25,3 +25,7 @@ spec:
       protocol: TCP
       port: {{ .Values.ports.airflowUI }}
       targetPort: {{ .Values.ports.airflowUI }}
+    - name: oauth2-proxy
+      protocol: TCP
+      port: 8081
+      targetPort: oauth2-http

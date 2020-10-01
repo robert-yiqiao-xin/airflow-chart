@@ -1,0 +1,31 @@
+################################
+## OAuth2 Proxy Config
+#################################
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  labels:
+    tier: airflow
+    component: webserver
+    release: {{ .Release.Name }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: {{ .Release.Service }}
+{{- with .Values.labels }}
+{{ toYaml . | indent 4 }}
+{{- end }}
+  name: {{ printf "%s-oauth2-proxy" .Release.Name }}
+data:
+  oauth2-proxy.cfg: |
+    email_domains = [ 
+      "*"
+    ]
+
+    upstreams = [
+      "http://127.0.0.1:8080"
+    ]
+
+    ssl_insecure_skip_verify = true
+    ssl_upstream_insecure_skip_verify = true
+    force_https = false
+    redirect_url = "http://localhost:8081/oauth2/callback"
+    cookie_secure = false

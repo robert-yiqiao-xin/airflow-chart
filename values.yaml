@@ -38,6 +38,11 @@ ingress:
   auth:
     enabled: true
 
+oauth2:
+  cookieSecret: ~
+  clientID: ~
+  clientSecret: ~
+
 # Network policy configuration
 networkPolicies:
   # Enabled network policies
