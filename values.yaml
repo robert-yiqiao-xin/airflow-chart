@@ -270,6 +270,10 @@ webserver:
     lastName: user
     password: admin
 
+  service:
+    type: ClusterIP
+    loadBalancerIP: ~
+
 # Flower settings
 flower:
   resources: {}

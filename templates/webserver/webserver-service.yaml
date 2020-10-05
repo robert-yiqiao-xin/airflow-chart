@@ -15,17 +15,20 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-  type: ClusterIP
+  type: {{ .Values.webserver.service.type | default "ClusterIP" }}
+  {{- if .Values.webserver.service.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.webserver.service.loadBalancerIP }}
+  {{- end }}
   selector:
     tier: airflow
     component: webserver
     release: {{ .Release.Name }}
   ports:
-    - name: airflow-ui
-      protocol: TCP
-      port: {{ .Values.ports.airflowUI }}
-      targetPort: {{ .Values.ports.airflowUI }}
+    # - name: airflow-ui
+    #   protocol: TCP
+    #   port: {{ .Values.ports.airflowUI }}
+    #   targetPort: {{ .Values.ports.airflowUI }}
     - name: oauth2-proxy
       protocol: TCP
-      port: 8081
-      targetPort: oauth2-http
+      port: 8080
+      targetPort: 4180

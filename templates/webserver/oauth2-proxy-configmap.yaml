@@ -24,8 +24,13 @@ data:
       "http://127.0.0.1:8080"
     ]
 
+    skip_provider_button = true
+    http_address = "0.0.0.0:4180"
+    request_logging = true
     ssl_insecure_skip_verify = true
     ssl_upstream_insecure_skip_verify = true
     force_https = false
-    redirect_url = "http://localhost:8081/oauth2/callback"
+    redirect_url = "http://35.238.185.232:8080/oauth2/callback"
     cookie_secure = false
+    provider = "oidc"
+    oidc_issuer_url = "http://aeo.dev.astronomer.io:32000/dex"

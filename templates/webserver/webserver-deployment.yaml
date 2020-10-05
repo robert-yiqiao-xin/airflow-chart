@@ -92,8 +92,6 @@ spec:
           ports:
             - containerPort: 4180
               name: oauth2-http
-              protocol: TCP
-              name: oauth2-http
         - name: webserver
           image: {{ template "airflow_image" . }}
           imagePullPolicy: {{ .Values.images.airflow.pullPolicy }}
