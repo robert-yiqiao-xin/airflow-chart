@@ -76,7 +76,7 @@ allowPodLaunching: true
 airflowVersion: 1.10.10
 
 # Default airflow repository
-defaultAirflowRepository: quay.io/astronomer/ap-airflow
+defaultAirflowRepository: quay.io/astronomer/ap-airflow-dev
 
 # Default airflow tag to deploy
 defaultAirflowTag: 1.10.10-buster
